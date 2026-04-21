@@ -203,42 +203,90 @@
             color: white;
         }
 
-        /* --- PAGINATION --- */
+        /* --- PROFESSIONAL PAGINATION STYLES --- */
         .pagination {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             margin: 40px 0 80px;
         }
 
-        .page-btn {
+        .page-nav-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             padding: 10px 20px;
-            border: 1px solid #ccc;
             background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             cursor: pointer;
-            border-radius: 4px;
             font-weight: 600;
-            color: #555;
+            font-size: 14px;
+            color: var(--cvent-navy);
             transition: all 0.3s ease;
+            font-family: inherit;
         }
 
-        .page-btn:hover:not(:disabled) {
+        .page-nav-btn svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .page-nav-btn:hover:not(:disabled) {
             background: var(--cvent-blue);
             color: white;
             border-color: var(--cvent-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 106, 225, 0.2);
         }
 
-        .page-btn:disabled {
-            background: #f0f0f0;
-            color: #aaa;
+        .page-nav-btn:disabled {
+            opacity: 0.4;
             cursor: not-allowed;
-            border-color: #eee;
+            background: #f8f9fa;
         }
 
-        .page-info {
+        .page-indicator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8f9fa;
+            padding: 8px 24px;
+            border-radius: 40px;
+            border: 1px solid #e8e8e8;
+        }
+
+        .page-number-box {
+            background: white;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            color: var(--cvent-blue);
+            font-size: 16px;
+            min-width: 50px;
+            text-align: center;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-text {
+            color: #666;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .page-total {
+            color: var(--cvent-navy);
             font-weight: 600;
-            color: #555;
+        }
+
+        .separator {
+            color: #ccc;
+            font-weight: 400;
         }
 
         /* --- MODAL (POPUP) --- */
@@ -289,7 +337,7 @@
             color: #333;
         }
 
-        /* --- IMPROVED FOOTER STYLES --- */
+        /* --- FOOTER STYLES --- */
         .footer {
             background: var(--footer-bg);
             color: var(--footer-text);
@@ -343,7 +391,6 @@
             color: white;
         }
 
-        /* Icon styles */
         .footer-icon {
             width: 20px;
             height: 20px;
@@ -470,6 +517,18 @@
             .card {
                 flex: 0 0 calc(50% - 10px);
             }
+
+            .pagination {
+                gap: 8px;
+            }
+
+            .page-nav-btn {
+                padding: 8px 16px;
+            }
+
+            .page-indicator {
+                padding: 6px 16px;
+            }
         }
 
         @media(max-width: 450px) {
@@ -489,6 +548,10 @@
 
             .newsletter-form {
                 flex-direction: column;
+            }
+
+            .pagination {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -527,11 +590,26 @@
             </div>
         </div>
 
-        <!-- PAGINATION -->
+        <!-- PROFESSIONAL PAGINATION -->
         <div class="pagination">
-            <button class="page-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
-            <span class="page-info">Page <span id="pageNumber">1</span> of <span id="totalPages"></span></span>
-            <button class="page-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+            <button class="page-nav-btn" id="prevBtn" onclick="changePage(-1)" aria-label="Previous page">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+
+            <div class="page-indicator">
+                <span class="page-text">Page</span>
+                <span class="page-number-box" id="pageNumber">1</span>
+                <span class="separator">of</span>
+                <span class="page-total" id="totalPages">1</span>
+            </div>
+
+            <button class="page-nav-btn" id="nextBtn" onclick="changePage(1)" aria-label="Next page">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -705,7 +783,6 @@
     </div>
 
     <script>
-        
 
         const speakers = [
             {
@@ -2263,7 +2340,6 @@
                 imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0911281d5c4d4071b136487925b996a2!_!6e9370d97449e993019a42db49665590.jpg?f=webp"
             }
         ];
-
         // Pagination Logic
         const itemsPerPage = 12;
         let currentPage = 1;
