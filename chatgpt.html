@@ -1,0 +1,2343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speakers - NALP 2026</title>
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --cvent-blue: #006AE1;
+            --cvent-navy: #182261;
+            --cvent-orange: #D75000;
+            --bg-color: #FFFFFF;
+            --text-color: #333;
+            --border-color: #E6E6E6;
+            --footer-bg: #0F172A;
+            --footer-text: #94A3B8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Open Sans', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- MAIN CONTENT WRAPPER --- */
+        .main-content {
+            flex: 1;
+        }
+
+        /* --- NAVBAR (TALL STYLE) --- */
+        .navbar {
+            background-color: var(--cvent-navy);
+            color: white;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-left {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-right a {
+            color: #E0E0E0;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-right a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Register Button */
+        .nav-btn {
+            background: var(--cvent-blue);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-decoration: none !important;
+            margin-left: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #0050a8;
+            text-decoration: none !important;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+            border-bottom: 1px solid #eee;
+            background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            color: var(--cvent-navy);
+            margin: 0 0 10px 0;
+        }
+
+        /* --- TITLE --- */
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--cvent-orange);
+        }
+
+        /* --- GRID & CARD LAYOUT --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 calc(25% - 19px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: var(--cvent-blue);
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f0f0f0;
+            margin: 0 auto 20px;
+        }
+
+        .card-details {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--cvent-navy);
+        }
+
+        .title {
+            font-size: 13px;
+            color: var(--cvent-orange);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 14px;
+            color: var(--cvent-blue);
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 10px 0;
+            border: 1px solid var(--cvent-blue);
+            color: var(--cvent-blue);
+            font-weight: 700;
+            border-radius: 5px;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--cvent-blue);
+            color: white;
+        }
+
+        /* --- PAGINATION --- */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 40px 0 80px;
+        }
+
+        .page-btn {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background: var(--cvent-blue);
+            color: white;
+            border-color: var(--cvent-blue);
+        }
+
+        .page-btn:disabled {
+            background: #f0f0f0;
+            color: #aaa;
+            cursor: not-allowed;
+            border-color: #eee;
+        }
+
+        .page-info {
+            font-weight: 600;
+            color: #555;
+        }
+
+        /* --- MODAL (POPUP) --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--cvent-navy);
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        /* --- IMPROVED FOOTER STYLES --- */
+        .footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 60px 40px 30px;
+            margin-top: 60px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        /* Icon styles */
+        .footer-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .footer-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: var(--footer-text);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .footer-section ul li:hover .footer-icon svg {
+            stroke: var(--cvent-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+            stroke: none;
+        }
+
+        .social-link:hover {
+            background: var(--cvent-blue);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--footer-text);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--cvent-blue);
+        }
+
+        .newsletter-btn {
+            padding: 10px 20px;
+            background: var(--cvent-blue);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: #0050a8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-bottom-links {
+            margin-top: 10px;
+        }
+
+        .footer-bottom-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media(max-width: 900px) {
+            .card {
+                flex: 0 0 calc(33.333% - 17px);
+            }
+        }
+
+        @media(max-width: 650px) {
+            .card {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+
+        @media(max-width: 450px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .card {
+                flex: 0 0 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main-content">
+        <!-- NAVBAR -->
+        <div class="navbar">
+            <div class="nav-left">NALP 2026 CONFERENCE</div>
+            <div class="nav-right">
+                <a href="#">Summary</a>
+                <a href="#">Agenda</a>
+                <a href="#" style="color: white; text-decoration: underline;">Speakers</a>
+                <a href="#">Attendees</a>
+                <a href="#" class="nav-btn">Register Now</a>
+            </div>
+        </div>
+
+        <!-- HERO -->
+        <div class="hero">
+            <h1>Annual Education Conference</h1>
+            <p>April 14-17, 2026 | Hollywood, FL</p>
+        </div>
+
+        <!-- TITLE -->
+        <div class="section-title">
+            Meet Our Speakers
+        </div>
+
+        <!-- SPEAKER GRID -->
+        <div class="container">
+            <div class="grid" id="speakers-grid">
+                <!-- Cards will be injected here by JS -->
+            </div>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+            <button class="page-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+            <span class="page-info">Page <span id="pageNumber">1</span> of <span id="totalPages"></span></span>
+            <button class="page-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+        </div>
+    </div>
+
+    <!-- PROFESSIONAL FOOTER WITH SVG ICONS -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h3>About NALP 2026</h3>
+                    <p>The premier event for legal talent professionals, bringing together industry leaders, innovators,
+                        and practitioners for four days of learning, networking, and growth.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li>
+                            <span class="footer-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </span>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <span class="footer-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </span>
+                            <a href="#">Agenda</a>
+                        </li>
+                        <li>
+                            <span class="footer-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </span>
+                            <a href="#">Speakers</a>
+                        </li>
+                        <li>
+                            <span class="footer-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </span>
+                            <a href="#">Attendees</a>
+                        </li>
+                        <li>
+                            <span class="footer-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </span>
+                            <a href="#">Venue Information</a>
+                        </li>
+                        <li>
+                            <span class="footer-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </span>
+                            <a href="#">FAQs</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>
+                            <span class="footer-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                    <path d="m22 7-10 7L2 7" />
+                                </svg>
+                            </span>
+                            <a href="mailto:info@nalp2026.com">info@nalp2026.com</a>
+                        </li>
+                        <li>
+                            <span class="footer-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </span>
+                            <a href="tel:+1234567890">+1 (234) 567-890</a>
+                        </li>
+                        <li>
+                            <span class="footer-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </span>
+                            <span>1111 N Ocean Dr, Hollywood, FL 33019</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our newsletter for the latest updates and announcements.</p>
+                    <form class="newsletter-form"
+                        onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 NALP Annual Education Conference. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL POPUP -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <img src="" alt="Speaker" class="modal-img" id="modalImg">
+            <h2 id="modalName" style="margin-bottom: 5px; color: var(--cvent-navy);"></h2>
+            <p id="modalTitle"
+                style="color: var(--cvent-orange); font-weight: bold; font-size: 14px; margin-bottom: 10px;"></p>
+            <p id="modalCompany" style="color: var(--cvent-blue);"></p>
+            <p style="margin-top: 20px; color: #555; line-height: 1.5;">
+                Here you can put the detailed bio, session topics, or schedule information for the speaker.
+            </p>
+            <button class="btn" style="width: auto; padding: 10px 30px; margin-top: 20px;"
+                onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        
+
+        const speakers = [
+            {
+                name: "Fairuz Abdullah",
+                title: "Deputy Director, Career Development Office",
+                organization: "University of California Law, San Francisco",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/29fdfa1468e64dd4905256002aa4ee4f!_!fae240cd27e1563efa13600f0d271767.jpg?f=webp"
+            },
+            {
+                name: "Denita Acker",
+                title: "Senior Global Project Manager",
+                organization: "Winston & Strawn LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/893a79eeccac4bfc921513cc99f25be0!_!6ffa86ade5c0c5654ece13bcd193ec23.jpg?f=webp"
+            },
+            {
+                name: "Lindsay Aggarwal",
+                title: "Partner",
+                organization: "Bryan Cave Leighton Paisner LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/703551c670fb4e02b915169b625aef81!_!912ca24616c58d1cbe931ab9ee83a5a9.jpg?f=webp"
+            },
+            {
+                name: "Nicholas Alexiou",
+                title: "Vice President & Legal Consultant",
+                organization: "Javelin Search and Growth Advisors",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/122a8208ab684bfab6b1cabe77bd7c93!_!312ebdeaacbc178d196734963eb6a415.jpeg?f=webp"
+            },
+            {
+                name: "Meesha Ali",
+                title: "Sr. Manager, Learning & Development",
+                organization: "Freshfields US LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/dfe7cbe1f6174c3298e157ef33035c10!_!2788c641e168ef249aeb1ff7eb7a8458.jpg?f=webp"
+            },
+            {
+                name: "Sarah Alsaidi",
+                title: "Coach and Consultant",
+                organization: "Volta Talent Strategies",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/cde1c494719c44209722f426f0c0be05!_!bcca6e58db23b4cfdd9afc460bc9aa2f.jpg?f=webp"
+            },
+            {
+                name: "Drew Amoroso",
+                title: "Founder",
+                organization: "Due Course",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/313ebfab99a1456a9bc14e510a98ccc9!_!dccb5dab23e85aa56943b7a531292c55.jpg?f=webp"
+            },
+            {
+                name: "Robin Apodaca",
+                title: "Associate Dean of Career Services",
+                organization: "USC Gould School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/e5f1313e601448638a7787f41bccd57e!_!89d9991b3a2d03ae2123ee01df6c0787.jpg?f=webp"
+            },
+            {
+                name: "Alison Ashe-Card",
+                title: "Associate Dean for Inclusive Engagement and Culture",
+                organization: "Duke University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6f5c94a4979946e89c117a9a74a15d69!_!14cf5ee7d29b7ab892e450e16b5127a5.jpg?f=webp"
+            },
+            {
+                name: "Amine Bakas",
+                title: "Director, Legal Talent",
+                organization: "Gowling WLG (Montreal)",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d102e50b8e894d8383b563f371a8410b!_!aaa99d4ec804540a82b0fcc4d01ee5db.jpg?f=webp"
+            },
+            {
+                name: "Dyana Barninger",
+                title: "Senior Director of Legal Recruiting",
+                organization: "Faegre Drinker",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/04cff1ffb9f64077b2983bb954014229!_!bcdba2f232b1b948e3c79192fd1eeade.jpg?f=webp"
+            },
+            {
+                name: "Elisabeth A. Beal",
+                title: "Assistant Dean for Career Services",
+                organization: "William & Mary Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a00853e993ab440982ef1e07c5357108!_!09085a8768c88da8eba152443cfd7148.jpg?f=webp"
+            },
+            {
+                name: "Daniel Becker",
+                title: "Director of Accreditation Administration",
+                organization: "ABA Section of Legal Education and Admissions to the Bar",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/dda1028e18454f3fa7c30286b41e24fa!_!013c561671eaebd6a753cfdd6574b2f2.jpg?f=webp"
+            },
+            {
+                name: "Alisa Benedict O'Brien",
+                title: "Assistant Dean of Career Services",
+                organization: "University of Akron School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/e46c599914ab4393a9a4d7401be5a8d5!_!01ed10c3b614f66582bffe03108ccd0e.jpg?f=webp"
+            },
+            {
+                name: "Miriam Benor",
+                title: "Director of Attorney Coaching",
+                organization: "Pillsbury Winthrop Shaw Pittman LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0b56ee0af98e45da939071314485e2a5!_!747f015a3ff2e8cbf355a8090a5bd90a.jpg?f=webp"
+            },
+            {
+                name: "Loren Berryhill",
+                title: "Director of Career Development Programs",
+                organization: "Baylor University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f74d0d915f1945c0a4bc4c921e6bb937!_!6d2164bb8888461fb29772a59608fbdf.jpg?f=webp"
+            },
+            {
+                name: "Melissa Berry",
+                title: "Director of Attorney Development",
+                organization: "Perkins Coie LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/587cb0fb2cb74c7e88306a1191cd9178!_!545ca796f45e4b295dbe4a1e4ae8c96f.jpg?f=webp"
+            },
+            {
+                name: "Ritu Bhasin",
+                title: "CEO and Founder",
+                organization: "bhasin consulting inc.",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/76ee79b2d7ff4dc4bc51259520cd316d!_!0aab64ddd7e440aaac0a4df986845f76.jpg?f=webp"
+            },
+            {
+                name: "Pascale Bishop",
+                title: "Manager of Attorney Integration",
+                organization: "Fisher Phillips",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d76f2bef4d7a43a1aedbdbb69a3e3258!_!a768bda0163113e1c1dc118016f5f0ff.jpg?f=webp"
+            },
+            {
+                name: "Rachael Bosch",
+                title: "CEO",
+                organization: "Fringe PD",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/2b2fdc940fdd4df89a15dead1bf3016d!_!b10b8ca0fa1b0f5aba9f95063bf1ea6a.png?f=webp"
+            },
+            {
+                name: "Derek Brainard",
+                title: "Director - Financial Education",
+                organization: "AccessLex Institute",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/4d305ea7903d4ca0a006c141ce3102b3!_!13d1b14c3c66b6a081112d213e1f16b3.jpg?f=webp"
+            },
+            {
+                name: "Donna Branca",
+                title: "Director of Strategic Leadership and Secretary to the Firm",
+                organization: "Blank Rome LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c5cca0183f44401ebfd85cde839e4a5b!_!0a5f84d917c4d5185599bad6d22ece9b.jpg?f=webp"
+            },
+            {
+                name: "Adam Braveman",
+                title: "Chief Executive Officer",
+                organization: "Firm Prospects",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6e5fccf6e59f4e9daf7a378941101215!_!b3cd8b00d3f8a6cd2bc041024fb585d1.jpeg?f=webp"
+            },
+            {
+                name: "Larissa Brewster",
+                title: "Director for Graduate Advising and Outcomes",
+                organization: "Boston University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/615ef4e2c595400aa6fd925fab91e4dd!_!7a853942767c6e1289509c55d367c982.jpg?f=webp"
+            },
+            {
+                name: "Kristine Bridges",
+                title: "Assistant Dean of Career Development",
+                organization: "Baylor University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ed2a1df35a694e9aba86207305ed8c75!_!d2f8abed9c8e379f86cdc3b6fc7cee75.jpg?f=webp"
+            },
+            {
+                name: "Karen Britton",
+                title: "Vice Dean, Admissions and Career & Professional Development",
+                organization: "University of South Carolina Joseph F. Rice School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b8a2314e24c3437f895e3607b52a5915!_!06b879453c13cbe4fcec7a382a41626f.jpg?f=webp"
+            },
+            {
+                name: "Kendra Brodin",
+                title: "Founder & CEO",
+                organization: "Esquire Well",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/49a61ee865cb4afc883bd3530361ef6f!_!c9b8745f627ca7940baca866252231a6.jpeg?f=webp"
+            },
+            {
+                name: "Emily Bronstein",
+                title: "Manager, Alumni Relations",
+                organization: "Fried Frank",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/dda4b1c7f8124a0fba4f59e877ae86ff!_!9a4676e2593688a77359307f7f9b2909.jpg?f=webp"
+            },
+            {
+                name: "Toccarra Brooks",
+                title: "Chief Strategic Recruiting Officer",
+                organization: "Eversheds Sutherland LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/53c35bf0467846ce93e3c207dc869daf!_!2e7cc34fa28040ca14b69d12ed4c5958.jpg?f=webp"
+            },
+            {
+                name: "Kayla Broom",
+                title: "Director of Professional Development",
+                organization: "Bass, Berry & Sims PLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/3874c36e07eb4a1cab215eaa4dbe78d0!_!a0063890c74cae6f48f019329a0a2362.jpg?f=webp"
+            },
+            {
+                name: "Amanda Bryant",
+                title: "Product Marketing Manager",
+                organization: "Flo",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9b0901ce1a574c978896526aaf4c2546!_!e5928180d05206e7c85c5cd1178cf16e.jpg?f=webp"
+            },
+            {
+                name: "Kyla Burke-Lazarus",
+                title: "Director of Public Interest and Government Programs",
+                organization: "UC Law San Francisco",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/92b942748bea45e983af99b325300277!_!d851b03101652d905a548c86e18a0dc9.jpg?f=webp"
+            },
+            {
+                name: "Shannon Burke",
+                title: "Director of Talent Development and Inclusion",
+                organization: "Chapman and Cutler LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/46ebf4cc41644d2696dd2e6013b62e89!_!3589c5109db891235b89c388451ec764.jpg?f=webp"
+            },
+            {
+                name: "Jennifer Caggiano",
+                title: "Senior Director of Professional Development",
+                organization: "Covington & Burling",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/26e49f62f07e42c3b5dfdf6a4047cf37!_!b2b4ebd184c83f7705650b69655f8f13.jpg?f=webp"
+            },
+            {
+                name: "Rebecca Calman",
+                title: "Head of Recruitment & Associate Integration",
+                organization: "Freshfields US LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/81bf62d9952f4a998de4d4dff2b2ad1f!_!9f233ff42084af174f77399c371830a1.jpg?f=webp"
+            },
+            {
+                name: "John Campbell",
+                title: "Director of Legal Recruitment",
+                organization: "New York City Law Department",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/46b10bde70434c65a8b23e9fc0d627fd!_!a5232e3b086de628591d19374079aa5a.jpg?f=webp"
+            },
+            {
+                name: "Courtney Carter",
+                title: "Chief Inclusion & Engagement Officer",
+                organization: "Jenner & Block LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/3c1f2e227f99413faa960462bacf1604!_!14e4d7763c4429583f60df4bb3737b53.jpg?f=webp"
+            },
+            {
+                name: "Jill Caughie",
+                title: "Assistant Director of Shareholder Recruiting and Integration",
+                organization: "Stevens & Lee",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6a62836b5e444e5b96cc8d02f6abe89f!_!840d566ea995a6aad78a55dbe82140b3.jpg?f=webp"
+            },
+            {
+                name: "Ann Chang",
+                title: "Senior Associate Director of Career Development",
+                organization: "Pepperdine Caruso School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c7b0cfad4c7d4ccda002bf5ce9fd4a0f!_!0cd9dc39301ed35d9326eb16f2fbca22.jpg?f=webp"
+            },
+            {
+                name: "Tanisia V. Charles",
+                title: "Recruiting Manager",
+                organization: "Jones Day",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/079bc9420f33440aae941851d394027d!_!7e806f235257c8e572028c5127cccb53.jpg?f=webp"
+            },
+            {
+                name: "Joe Christian",
+                title: "Director of Attorney Recruiting",
+                organization: "Bass, Berry & Sims",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/fb251912b92b49b187381fc0f46abb03!_!0c49286e0f50859ec8185a33085b5060.jpg?f=webp"
+            },
+            {
+                name: "Samantha Ciriaco",
+                title: "Director of Recruiting",
+                organization: "Hahn Loeser & Parks, LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6ae05a127bc243e1ac06155d12d8254d!_!68c0bf9693355716043248d4cddf3afe.jpg?f=webp"
+            },
+            {
+                name: "Ryan Coleman",
+                title: "Director of International Student Services",
+                organization: "Georgetown Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/dc60845012974334984a29916f59c992!_!23048b22cf2137e71a7dd0bb2d78e094.jpeg?f=webp"
+            },
+            {
+                name: "Maria Comas",
+                title: "Assistant Dean of Career Services & Alumni Relations",
+                organization: "Thomas R. Kline School of Law of Duquesne University",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/01f323df16564012bcebdcf283fbfbb7!_!4f3742c9f38cb205090a6fefa4884880.jpg?f=webp"
+            },
+            {
+                name: "Jordana Confino",
+                title: "Founder & CEO; Adjunct Professor",
+                organization: "JC Coaching & Consulting",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d28d3fdcb1dd420c83da666103988202!_!d05592c210dac8607da00f148e9ac64e.jpg?f=webp"
+            },
+            {
+                name: "Kaitlyn Connolly",
+                title: "Specialist, Onboarding and Integration",
+                organization: "Norton Rose Fulbright US LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6531619512884225af21aa96e96b3752!_!d86c78e1d37e333e1c491b873dce4c3f.jpg?f=webp"
+            },
+            {
+                name: "Antony Cooke",
+                title: "Consultant",
+                organization: "Antony Cooke Consulting",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b5a6f0b912b345a799e741ea04bc7d11!_!7c3710af67830e8c278908c6d1ce5bfd.jpg?f=webp"
+            },
+            {
+                name: "Deshawn Cook",
+                title: "Senior Diversity & Inclusion Coordinator",
+                organization: "Williams & Connolly",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c9ab92d23afb41a8959e943eed83ebf5!_!7b86a62c5d40a2567e38213de9dfdfde.jpg?f=webp"
+            },
+            {
+                name: "Logan Cornett",
+                title: "Director of Research, Legal Education, & Licensing",
+                organization: "Inst. For the Advancement of the American Legal Sys. (IAALS)",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/64d16ab6118d43dfbe024a0c19e8f4f8!_!c105cf902240868f673b2f0fcf760b79.jpg?f=webp"
+            },
+            {
+                name: "Ashanti Crawford",
+                title: "Assistant Dean for Career Strategy & Advancement",
+                organization: "Villanova University Charles Widger School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d8bc7b65821b4129a45cbbcc9a59a41e!_!3152c8dffe98cb9a29d95c65787b1289.jpeg?f=webp"
+            },
+            {
+                name: "Chuck Curtis",
+                title: "President",
+                organization: "ClCurtis31 Consulting",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d630793430e44a37bd2c4af7124f4e83!_!44f1716e9f883d0096eea25521a1dc37.jpg?f=webp"
+            },
+            {
+                name: "Debby Cusumano Caldwell",
+                title: "Director of Alumni Relations",
+                organization: "Winston & Strawn LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/40ac465a5ee943e68e8c2d9a550bb199!_!e5ecd09e3e5b7781e8f84cd35df1f8d6.jpg?f=webp"
+            },
+            {
+                name: "Amy Dallas Dunayevich",
+                title: "Attorney and Author of Right-Relationship: Practicing and Teaching Trauma-Responsive Restorative Adv",
+                organization: "https://amydallas.com",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/1920a534ce444532b60046c1bb590de7!_!872c789237532297b0ebeff53c94a4e9.jpg?f=webp"
+            },
+            {
+                name: "Jose Luis Davila Gonzalez",
+                title: "Assistant Director",
+                organization: "Georgetown Law, Office of Career Strategy",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/57e648ffa61a4e219139bc772313d0d2!_!6697387a6d152df59e4917d14471c7c3.jpg?f=webp"
+            },
+            {
+                name: "Shannon Davis",
+                title: "Chief Legal Recruiting & Integration Officer",
+                organization: "Mintz",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a48421c4482a4c61ad8b6726ce3eb729!_!a0df9cbc9f6dbb8ad787d1c0c5c405a3.jpg?f=webp"
+            },
+            {
+                name: "Frannie De Simone",
+                title: "Associate Recruiting Manager",
+                organization: "Faegre Drinker Biddle & Reath LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/1efef6fbb5e448788b166c1bfd28088e!_!994d3fb7f36ebb7740f0f1ad6c4e6304.jpg?f=webp"
+            },
+            {
+                name: "Shannon DeGennaro",
+                title: "Director of Recruiting and Professional Development",
+                organization: "Brooks, Pierce, McLendon, Humphrey & Leonard LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/28dfd749069e42379260f0125ed7a60e!_!9bce19adae7dbfc90a8b1c5dbedc5e31.jpg?f=webp"
+            },
+            {
+                name: "Jeffrey Delaney",
+                title: "Partner, Chief Recruiting Officer",
+                organization: "Pillsbury Winthrop Shaw Pittman LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/2ab32d1efd5745d794205aed15eb0b4f!_!5d168eb883c4c6c781eb867342d119a1.jpg?f=webp"
+            },
+            {
+                name: "Shannon Delecki",
+                title: "Director of Recruitment Programs",
+                organization: "University of Michigan Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/bd24b46099d34eacaef2563fc27b657c!_!291db238912edc583588aae44dd4de71.jpg?f=webp"
+            },
+            {
+                name: "Emily Denmark",
+                title: "Professional Development Manager",
+                organization: "Manatt, Phelps & Phillips LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/aa40e5375f324ae389c6e7d61780b3af!_!b18f61e72bf08904af9e822d4bf0f5c1.jpg?f=webp"
+            },
+            {
+                name: "Laura DeRise",
+                title: "Vice President",
+                organization: "Javelin Search & Growth Advisors",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/00c6c3e20ecb4ed2a0366e5d75a4b067!_!6050455d11bb17dc8c270db630f68a33.jpg?f=webp"
+            },
+            {
+                name: "Ziedah Diata",
+                title: "Attorney, Nervous System Educator, and Coach",
+                organization: "https://www.ziedahdiata.com/",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6368adafea884addb35ef85a66eed5a9!_!a59b727eb59498dfabe4601d70fd8d72.jpeg?f=webp"
+            },
+            {
+                name: "Lan Diep",
+                title: "Director of Fellowships",
+                organization: "Equal Justice Works",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/5a947949a7cf412db2e261adde60430a!_!f7f9b546391f0c2c08688bc1c913a7dc.jpg?f=webp"
+            },
+            {
+                name: "Dale Durham",
+                title: "Managing Director",
+                organization: "Major, Lindsey & Africa",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a3de583def9b42e28756779509f114f6!_!f7869d381c3a57e4827a8f0a137a5667.jpg?f=webp"
+            },
+            {
+                name: "Douglas Ebeling",
+                title: "Attorney Development Manager",
+                organization: "Cleary Gottlieb Steen & Hamilton LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/3083e10beef7481dbf7a7a5624a19942!_!9f56fa0f894151161c1fb6c72914863d.jpeg?f=webp"
+            },
+            {
+                name: "Paula Edgar",
+                title: "CEO",
+                organization: "PGE Consulting Group LLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d495100ff3ab4b5f963712b24cef5528!_!237a9215bca23598888bec63924567af.jpg?f=webp"
+            },
+            {
+                name: "Kate Edwards",
+                title: "Consulting Partner",
+                organization: "Greiner Consulting Group",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/35dca66d055943ceb03b179fc66f1cea!_!73c3e6f89dd7058fa8ae59fc61a6da8c.jpg?f=webp"
+            },
+            {
+                name: "Gregg Eisenberg",
+                title: "Managing Partner",
+                organization: "Benesch Friedlander Coplan & Aranoff LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6596ef62520b4a00a4a3ea8370fa29f5!_!c403becec3654646530559d9f54e7d7f.jpg?f=webp"
+            },
+            {
+                name: "Veronica Elizalde",
+                title: "Director of Employer Engagement",
+                organization: "St. Mary's University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c7fba2dadd4249d29e2ae462bb506934!_!df966cabe768a29e11a62ea6ab31f2d6.jpg?f=webp"
+            },
+            {
+                name: "Michael Ellenhorn",
+                title: "Founder and Chief Executive Officer",
+                organization: "Decipher Investigative Intelligence",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/1341fb3c346946af8a3a97fe92923f51!_!dfe23b1e547ecb047214422b6e8cf8a2.jpg?f=webp"
+            },
+            {
+                name: "Melanie Ellis Starks",
+                title: "Associate Director of Law Career Strategy",
+                organization: "Washington and Lee University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/5f7041593edc4dfcb1877347ddb6bbd7!_!ed66fcb1f251e0e7579ee21b38a2c6e5.jpg?f=webp"
+            },
+            {
+                name: "Bruce Elvin",
+                title: "Associate Dean and Sr. Lecturing Fellow, Career & Professional Development Center",
+                organization: "Duke University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9a8bc8e45a9f4ca5bbda710ad07f4f6b!_!3fc1ab5c60e546a47029908c5b8c7a43.jpg?f=webp"
+            },
+            {
+                name: "Cait Evans",
+                title: "Global Talent Head of Research",
+                organization: "Chambers & Partners",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ca56b0fa09424527910c33ef0d44214b!_!a1374443dbd24b68be0a294f24d30982.jpg?f=webp"
+            },
+            {
+                name: "Lisa Feden",
+                title: "Director of Legal Recruiting",
+                organization: "Ballard Spahr LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ed8d04ff92f448f9a34b0aa58ad1ee03!_!8131b6d9ab4a9ba50038a04db3c83024.jpg?f=webp"
+            },
+            {
+                name: "Kasey Fenn",
+                title: "Director of Professional Development & Recruiting",
+                organization: "Davis Graham & Stubbs LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a2f615f5f9694713b94734a35ebad6b6!_!3706a06e1b271ca94754f0dedec46dc3.jpg?f=webp"
+            },
+            {
+                name: "Elissa Ferrari",
+                title: "Director, Legal Talent",
+                organization: "Gowling WLG",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9c639d2a64b44eb798565218bc6038f7!_!313a708d852b2e479ffdbcf12df3704f.jpg?f=webp"
+            },
+            {
+                name: "Michelle Fivel",
+                title: "Partner",
+                organization: "Hatch Henderson Fivel",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9fced4bd17384525af3c5e31355fb8cb!_!cab51a8a66ccffcc02e46a9bfadbcc00.jpg?f=webp"
+            },
+            {
+                name: "Valerie Fontaine",
+                title: "Managing Member",
+                organization: "SeltzerFontaine LLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/baeb04d4d3964b259c02a2eb4709b523!_!0c8eb102886a0cb511fc4f279b26c83c.jpeg?f=webp"
+            },
+            {
+                name: "Melissa Forshey Schwind",
+                title: "Director of Attorney Talent",
+                organization: "Ward and Smith, P.A.",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/229b0de11a7d479da73990bacad9fae7!_!9b04c48e194612791347fbd3ac587f2f.jpg?f=webp"
+            },
+            {
+                name: "Lindsey Frischer",
+                title: "Attorney, Coach",
+                organization: "https://www.lindseyfreida.com",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c07de91ec02744dba29f12109f37ee6b!_!03d8b43a32748a11d29065e09859e5ec.jpg?f=webp"
+            },
+            {
+                name: "Leanne Fuith",
+                title: "Professor of Law",
+                organization: "Mitchell Hamline School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/fe3987447b6c4462919ab975b23352f6!_!0590e01cb1e519c9fdd893c1aa500e6a.jpg?f=webp"
+            },
+            {
+                name: "Matthew Galando",
+                title: "Director of Professional Development",
+                organization: "K&L Gates LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/7724011e804e4093a692562634a98f2a!_!2152fef388b22f940e93b1879ebef3c9.jpg?f=webp"
+            },
+            {
+                name: "Aglaia Galimanis",
+                title: "Partner",
+                organization: "Klein Landau & Edelman",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/98c060afef294b0ca2e08c9b40f272d9!_!617f2bc2b0643228f16bac3329bb8ad5.jpg?f=webp"
+            },
+            {
+                name: "Victoria Gamble",
+                title: "Partner",
+                organization: "Gamble Partner Placement",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/63c1ccb3f5c949e293caaee7341e797f!_!b4c92a5c6385f9eeb3efe47d1a7327df.png?f=webp"
+            },
+            {
+                name: "Alexandra Garcia",
+                title: "Associate Recruitment Manager & National School Engagement",
+                organization: "Hogan Lovells",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/7d4ca48c124b4b8ca247fb0ef99865a4!_!3e77f02f28e10eb6b1357b13a7c1b8d4.jpg?f=webp"
+            },
+            {
+                name: "Jennifer Geller",
+                title: "Public Service & Policy Program Managing Director",
+                organization: "University of Oregon School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b1d5d0caf66a4c749e3f265462779932!_!9faf5cb13f8c87762011a680b609f996.jpeg?f=webp"
+            },
+            {
+                name: "Christopher Gerlica",
+                title: "Associate Director of Career Development",
+                organization: "Roger Williams University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/75fe1ec57e094b46b9aad2e6052566e6!_!82cda10b82e40c8d909e6c021d4b5fcb.jpg?f=webp"
+            },
+            {
+                name: "Hilary Gerzhoy",
+                title: "Founder",
+                organization: "Gerzhoy PLLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/361362a0296440a1b463f844f560bd9f!_!bf9c3fbd93e66457e8325c3c97bcbab0.jpg?f=webp"
+            },
+            {
+                name: "Andrea Gilliam",
+                title: "Coach & Trainer",
+                organization: "Andrea Gilliam Consulting",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f969bf9a2efe46448c39e3c76940e613!_!16f40c50e7b1edae763afd6e3018cecd.jpg?f=webp"
+            },
+            {
+                name: "Charlie Gillig",
+                title: "Executive Director",
+                organization: "Skadden Foundation",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/74dbdb75269244aaab0479aa75f4de93!_!441cac459356e840f3bd91e36791b1b0.jpg?f=webp"
+            },
+            {
+                name: "Jennifer Gillman",
+                title: "Founder and President",
+                organization: "Gillman Strategic Group",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/947b8d0d154646fe8413eb8a634e6390!_!9d1c7a19b0656fafac79826bfa7ee233.jpg?f=webp"
+            },
+            {
+                name: "Genhi Givings-Bailey",
+                title: "Chief Diversity, Inclusion & Opportunity Officer",
+                organization: "Perkins Coie LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/dbb291dab7bd4c49a2a08641efee2258!_!e501964db433e8792768d3440efd35be.jpg?f=webp"
+            },
+            {
+                name: "David Glasgow",
+                title: "Executive Director of the Meltzer Center for Diversity, Inclusion, and Belonging",
+                organization: "Adjunct Professor at NYU School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/69b7c680eb2e4f9aa5b4395f096c64db!_!0cc1d8f874f3525d72e0cc5bbf59cda6.jpg?f=webp"
+            },
+            {
+                name: "Rebecca Glatzer",
+                title: "Partner",
+                organization: "Major, Lindsey & Africa",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/56db7620eb404d8089e5a486dd9ea599!_!650f6008c489575e7450c7532bc195e2.jpg?f=webp"
+            },
+            {
+                name: "Elizabeth Gradinger",
+                title: "Associate Director, Career and Professional Development",
+                organization: "Brooklyn Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c04fcde2ca424ebbb157e1e97c556840!_!d80a040036ae47407eccda5720cb7a08.jpg?f=webp"
+            },
+            {
+                name: "Katie Greene",
+                title: "Senior Legal Recruiting Coordinator",
+                organization: "Neal, Gerber & Eisenberg LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a0a58817a14242ca9fd346aa8e338a0b!_!75eda080736e3a24b2be2372699437fc.jpg?f=webp"
+            },
+            {
+                name: "Jarrett Green",
+                title: "Well-Being, Leadership & Peak Performance Consultant",
+                organization: "NKB Consultancy",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/5931464b9bd242989c53fc36dcc19feb!_!b0a7809efaf6ed5c28242c31a2f8eb5b.jpg?f=webp"
+            },
+            {
+                name: "Joseph Groot",
+                title: "Head of Commercial",
+                organization: "VMock",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d00c08a30a5f4f6093ea2294d7a3bc16!_!8dda72df43a725858057a7aec4df1e50.png?f=webp"
+            },
+            {
+                name: "Greg Hamman",
+                title: "Chief Data Officer",
+                organization: "Decipher Investigative Intelligence",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/5db32dcae45b4668ab3513d98051a903!_!08a90194fdf84550c288312808ffaea0.jpg?f=webp"
+            },
+            {
+                name: "Kara Hardin",
+                title: "Founder",
+                organization: "The Practice Lab",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0b68d6cf64284a6697c4b1f50c395e9d!_!51842a9c63a65372a731fd9ace785c80.png?f=webp"
+            },
+            {
+                name: "Suzanne Hard",
+                title: "Associate Dean, Career Development Office",
+                organization: "George Washington University Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/142a849832ee4462a90f2b771530a846!_!cb07138e9749b4ba98bee88bb5cd7eb2.jpg?f=webp"
+            },
+            {
+                name: "Lauren Hartley",
+                title: "Associate Director, Network Engagement",
+                organization: "Equal Justice Works",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f74909443ee34531aee52784c4d9b53a!_!cb0173a5735158160a3a8fff9fe5c6ec.jpg?f=webp"
+            },
+            {
+                name: "Anne Heaviside",
+                title: "Principal",
+                organization: "Upperline Legal",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/37917da2740f4492897541808a3ce758!_!8c5db2ca767075e80534a51a80c18dde.png?f=webp"
+            },
+            {
+                name: "Jennifer Heckman",
+                title: "Director of Employer Recruitment",
+                organization: "Florida State University College of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/2bef4278ebe942e3bb596c8fd3ae0010!_!a63610179d62891dd0d4cf215e296b80.jpg?f=webp"
+            },
+            {
+                name: "Jennifer Henderson",
+                title: "Partner",
+                organization: "Hatch, Henderson, Fivel",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ab17639616a54bdda5f99ec99887e8db!_!045b21efc5e51e953092a16d3a81ae2b.jpg?f=webp"
+            },
+            {
+                name: "Jennifer Henfey",
+                title: "Associate Dean for Professional Development and Leadership",
+                organization: "Villanova University Charles Widger School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/2895b518090b42eb858849b4ca132232!_!623ad0dc904179ec282ff6e8dd0e5de8.jpg?f=webp"
+            },
+            {
+                name: "Debra Henley",
+                title: "Associate Dean of Career Services and Professional Development",
+                organization: "Florida State University College of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6d87c372c7f14ddd9cb9629b7fa66755!_!cf9ddda4f37cdcef026950d6db3988da.jpg?f=webp"
+            },
+            {
+                name: "Julie Henson",
+                title: "Chief Growth Officer",
+                organization: "Decipher Investigative Intelligence",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/8bb6b304d88942678a332c69b5e5807b!_!863b22e58870bb353bbbe9c5c2b4dab2.jpg?f=webp"
+            },
+            {
+                name: "Lynn Herron",
+                title: "Director of Legal Talent Acquisition",
+                organization: "Crowell & Moring LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/04b436fbcab441e7a73ff76d59346675!_!c048338101fefa471d0d2c63d80c1206.jpg?f=webp"
+            },
+            {
+                name: "Michele Hoff",
+                title: "Director for Judicial Clerkships",
+                organization: "Georgetown Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f35046fd92e14f348de087b47e2dd94c!_!783113e0232c4715604d52fe7667368e.jpg?f=webp"
+            },
+            {
+                name: "Michelle Hoover",
+                title: "Principal",
+                organization: "Baem Leadership LLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/aa7d30b6397946ba8e663f7f96252b5c!_!4e8c7362d6c48b16e8189d7eae25f0aa.jpg?f=webp"
+            },
+            {
+                name: "Skip Horne",
+                title: "Vice President for Engagement",
+                organization: "The NALP Foundation",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9eb6fc345589440195f4736ee7bdb5e9!_!2472e4462fc4e2ed1d41981e56c19f28.jpg?f=webp"
+            },
+            {
+                name: "Amy Hsieh",
+                title: "Executive Director of Public Service Law Center",
+                organization: "Brooklyn Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f08921c74fa04c89822bcab608b9245d!_!cb98884df8df568b0995c22abe8e977a.jpg?f=webp"
+            },
+            {
+                name: "Sunita Iyer",
+                title: "Professional Development & Training Manager",
+                organization: "WilmerHale",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f39b67911a5646b195ae4e610fe75700!_!ef76df7c247529ea1f7bf88cae3cc3fd.jpg?f=webp"
+            },
+            {
+                name: "Lauren Jackson",
+                title: "Dean of Career Services Howard School of Law",
+                organization: "Howard School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/09b1cdb1352547ee8e7ccf9ddc1b8550!_!0b3f7e64646f805ee27aa734a00cd865.jpg?f=webp"
+            },
+            {
+                name: "Sylvia James",
+                title: "Chief Opportunity and Inclusion Officer",
+                organization: "Winston & Strawn",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c83557b555364a9f839a4d41d62988db!_!ea27fbc2b8ecafcc59d4194660f14c7c.jpg?f=webp"
+            },
+            {
+                name: "Jennifer Jana",
+                title: "Senior Career Coaching & Planning Manager",
+                organization: "Troutman Pepper Locke",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/e3e416177af4460680d2fdb9ddaddc94!_!a67c66669e8397f35b790e0f324064a3.jpg?f=webp"
+            },
+            {
+                name: "David Johnson",
+                title: "Director of Client Services",
+                organization: "Chambers & Partners",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f2be0dc57f6e4920bb68f7169e7cc56c!_!a929469c02526d117663fbd9c0792c8d.jpg?f=webp"
+            },
+            {
+                name: "Crystal Jones",
+                title: "Manager of Community Engagement & Talent",
+                organization: "Parker Poe",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/1cf6a1ad52c34ea880dd123fef601659!_!540e05a13ac647bbf46be0953041814e.jpg?f=webp"
+            },
+            {
+                name: "Malachi Jones",
+                title: "Chief Diversity Partner",
+                organization: "Williams & Connolly",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/855315cfff274e71a7621f8aeb28707f!_!854ab14399d0e0481b539c4a152b9a46.jpg?f=webp"
+            },
+            {
+                name: "Tiffany Jordan",
+                title: "Director of Career Coaching & Planning",
+                organization: "Troutman Pepper Locke",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/fe27e23e665b4e638f0b60b6975f25c2!_!14a2bf68488e1c31b8ceeeb6e8fb126a.jpg?f=webp"
+            },
+            {
+                name: "Alexis Joyce",
+                title: "Assistant Dean of Career Development",
+                organization: "Pepperdine University Caruso School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/4e2945ced7da4c67ac76b0b17de48649!_!06ac982b5b22e748c7679fd02015c833.jpg?f=webp"
+            },
+            {
+                name: "Sara Kakuris Murrell",
+                title: "Attorney Recruiting Manager",
+                organization: "Morrison and Foerster LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0e6d5b01a28d42db8daf5711125a18d7!_!52e547c575c27c24e94ee92a5a662759.jpg?f=webp"
+            },
+            {
+                name: "Gianna Karapelou",
+                title: "Principal",
+                organization: "Karapelou Strategies LLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/147b87cd017144eeb3cfadb3ee0ba0c2!_!45452bcc3f104840224b5dd8c3256742.jpg?f=webp"
+            },
+            {
+                name: "Laura Karmatz",
+                title: "Senior Director of Global Alumni Relations & Attorney Experience",
+                organization: "Reed Smith",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/44f847cdf328448fba24f5e673aaef3d!_!70d16c1ad857078f3e2966728c90b027.jpg?f=webp"
+            },
+            {
+                name: "Paul Karvanis",
+                title: "Founder",
+                organization: "Leader Rising",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/7ee36a26adfb4a49ace3eca702ba8aac!_!ab2294926dd7b75fdc8693f3b039c8df.jpg?f=webp"
+            },
+            {
+                name: "Ari Katz",
+                title: "Chief of Lateral Parter Recruiting and Integration Organization",
+                organization: "King & Spalding",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a252eca32c9b4469b92de8512772ba67!_!2eb0e3a94dead943847b1f54da7099df.jpg?f=webp"
+            },
+            {
+                name: "Ellie Kelly",
+                title: "Attorney Recruiter",
+                organization: "LHH",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ebbd7d0c99674de383ee2532a6ed039d!_!97a775d073257bad4090c6ca1144f1f7.jpg?f=webp"
+            },
+            {
+                name: "Adrienne Kelly",
+                title: "Global Director of Alumni Relations",
+                organization: "McDermott Will & Schulte",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/fb9bea28944c439c91e3e3b6d6ffd99b!_!78d8069aff683c95e07fff155cc2ba8a.jpg?f=webp"
+            },
+            {
+                name: "Elizabeth (Betsy) Key",
+                title: "Attorney Recruiting Manager",
+                organization: "McGuireWoods",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0acda5fd9e504fcba5a6c7b891b00201!_!82ab2fd6977fb907bf1918d108544629.jpg?f=webp"
+            },
+            {
+                name: "Amy Killoran",
+                title: "Alumni Career Advisor",
+                organization: "Northwestern Pritzker School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ad90cf4a9eae472da847f4a0d5938f88!_!74da171926a7d60df48805677a0e1bbb.jpg?f=webp"
+            },
+            {
+                name: "Amy Kimmel",
+                title: "Assistant Dean, Career Development Office",
+                organization: "University of California Law, San Francisco",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/4e7fe35bd5974f15a03c1c6472cd9061!_!ac72efd831954a4f86488b303fc34fc3.jpg?f=webp"
+            },
+            {
+                name: "Tammy King",
+                title: "Assistant Dean for Professional Development",
+                organization: "Washburn University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/3442ea1370b64cb3b9e3fb9384b9192b!_!fb9450546ed3397227519ff105ad0b05.jpg?f=webp"
+            },
+            {
+                name: "Laké Laosebikan-Buggs",
+                title: "Director of Inclusive Excellence for Graduate and Professional Education and Adjunct Professor, Scho",
+                organization: "Elon University",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/475e0660b8d54d44abc8b8da2599d492!_!0404ba3f52fdd1403914986f493c5302.jpg?f=webp"
+            },
+            {
+                name: "Quaime V. Lee",
+                title: "Assistant Dean, Center for Co-op and Career Development",
+                organization: "Northeastern University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/8ef6c6c3eca849d38b4c44c6bbafcc58!_!f0920ca40644e1c4b871f042b180c796.jpg?f=webp"
+            },
+            {
+                name: "Sang Lee",
+                title: "Chief Executive Officer",
+                organization: "Volta Talent Strategies, LLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/81c34bb1ebfb492bb079d99a230e09c6!_!e7aeb9473b3da10a1ab9c4a1d511704d.jpg?f=webp"
+            },
+            {
+                name: "Luke Lemmeier",
+                title: "Recruiting Manager",
+                organization: "Jones Day",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/1d75ac8f78254d4a84b6909122dfe1b3!_!e985a0d2ecbbb9d15e4d17d53169ca1f.jpg?f=webp"
+            },
+            {
+                name: "Dru Levasseur",
+                title: "Founder & Principal",
+                organization: "Dru Levasseur Consulting, LLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ef8d3e309ad44e67b781f6a467a5aebc!_!fd317b0efa9ecb62c14cc4acd4f3aa79.jpg?f=webp"
+            },
+            {
+                name: "Jason Levin",
+                title: "Author / Speaker and Trainer / Executive Career, Business Development & Outplacement Coach",
+                organization: "Ready Set Launch, LLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/771ff25ce8ab486db2326bcc5a46bf71!_!29e3917dbd91d1094d9b3b1627ea0d26.jpg?f=webp"
+            },
+            {
+                name: "Jenny Li",
+                title: "Senior Employer Branding Manager",
+                organization: "Morrison Foerster",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/153ebdbd20bc428086d9d6b8e7036eed!_!30137495017f8bfb83037797bb301c97.jpg?f=webp"
+            },
+            {
+                name: "David C. Lowance, Jr.",
+                title: "Senior Assistant Dean, Career Development",
+                organization: "UVA School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c0e18b257daa45ac87f72dc5d11429a9!_!9f945f91c96cce4c273343a11ce4fa91.jpg?f=webp"
+            },
+            {
+                name: "Elise Lyman-Hall",
+                title: "Attorney Recruiting Manager",
+                organization: "Fisher & Phillips",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/393d2906dd3e43b98b0c1c6dbcc9b1cb!_!b73217964b83a258c06fd821b8c81ce4.jpg?f=webp"
+            },
+            {
+                name: "Alexandra Mai",
+                title: "Director of Recruiting and Integration",
+                organization: "Brown Rudnick",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/433a117622c240479395c850f29b95b6!_!50456bd32c91a0b0153f0a79abdebfad.jpg?f=webp"
+            },
+            {
+                name: "Bendita Cynthia Malakia",
+                title: "Head of Diversity & Engagement",
+                organization: "O’Melveny & Meyers",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/08d394d3b09c4367bcc1eb6f56c1f96f!_!b9104a468508e1a908137fe1ebdd7cc4.jpg?f=webp"
+            },
+            {
+                name: "Amy Mallow",
+                title: "Principal, Executive Coach and Recruiting Strategist at Talent Success, LLC",
+                organization: "Senior Talent Advisor at Kahana Feld LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9a7a2fa5f8c545ab8a967bfc253a2786!_!0b8e4892958045149c39f6843a57a952.jpg?f=webp"
+            },
+            {
+                name: "Selina Mamo",
+                title: "Director, Legal Talent",
+                organization: "Gowling WLG",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0a02af711dec4fa2816395027cc16206!_!c716efb135b6c5211c7c3410b6c49637.jpg?f=webp"
+            },
+            {
+                name: "Jennifer Mandery",
+                title: "Vice President for Research",
+                organization: "The NALP Foundation",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d59451443b4f419a83569f62c0647a8a!_!63140b50e64749d155b5b35ad38453f1.jpg?f=webp"
+            },
+            {
+                name: "Kara Marcoux",
+                title: "Associate Recruitment Manager",
+                organization: "Fox Rothschild LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f57e742cc5174572ba2255f1b44d8f3b!_!f7e80f30d928aee463620d943f2597c2.jpg?f=webp"
+            },
+            {
+                name: "Jessica Marks",
+                title: "Attorney Recruiting and Acquisition Director",
+                organization: "FBT Gibbons",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c73064ad95e64593a790472450fbe1c0!_!75321ecf806f828592402a3363fadc18.jpg?f=webp"
+            },
+            {
+                name: "Kathryn Marquez",
+                title: "Global Director of Learning & Development",
+                organization: "Bryan Cave Leighton Paisner LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/1acbe030e2054f4ab0e7285c4512e784!_!7b871bc395b5785cbe25a1e51751aa56.jpg?f=webp"
+            },
+            {
+                name: "Sadie Marsman",
+                title: "Manager, Associate Recruitment Mid-Atlantic Region and National Summer Program Engagement",
+                organization: "Hogan Lovells US LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/e6c22a3637b446599ec106bf9fed8c59!_!284ef8f5ec5f27b9022108aeedc627d0.jpg?f=webp"
+            },
+            {
+                name: "Rachel Martin",
+                title: "Director of Clinics, Externships and Public Interest",
+                organization: "Samford University Cumberland School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/757d918a80574322858a0cf3165641c9!_!ab779f9af1e00043007030b5c22ece9e.jpg?f=webp"
+            },
+            {
+                name: "Inga Masjule",
+                title: "Chief Executive Officer",
+                organization: "OneRetain",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c7a408beb3f54807a20dee80f412d6bd!_!4f1b321decb2346a65deb54a7cb2fd2d.jpg?f=webp"
+            },
+            {
+                name: "Tedi Mason",
+                title: "Director, Partner Growth",
+                organization: "Quarles & Brady LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/32ad213019614c8f9f5a905beb98c358!_!771dadbd74cf44f56653fd96ebbc093f.jpg?f=webp"
+            },
+            {
+                name: "Lauren Mas",
+                title: "Communications Senior Manager - Global Attorney Recruiting",
+                organization: "Latham & Watkins",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a8fab2d9633548a0abeb6fdd44c0c0cb!_!b04d420d2c89137582dece8c223d658e.jpg?f=webp"
+            },
+            {
+                name: "Sheri Mayerowitz",
+                title: "Director of Alumni Relations and Client Engagement",
+                organization: "Akin",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c58c39b0e10a446fb76ca23964fa36e8!_!025d8ea0575952ebc3b3d31b75432f10.jpg?f=webp"
+            },
+            {
+                name: "Rochelle McCain",
+                title: "",
+                organization: "Yale Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/29b598e5ba4644459d1d5b5ea29b4dfc!_!b5b08b01f6aba15c0e7d47c5a227f4bc.png?f=webp"
+            },
+            {
+                name: "Jason McCann",
+                title: "Owner and Principal",
+                organization: "Gridline Search and Consulting",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/1e0622fde0484dbaaf9c1f2c84bd5ed0!_!ce6ef3af9e3633bfccfb2ba07d4ed53b.jpg?f=webp"
+            },
+            {
+                name: "MaLora McCullough",
+                title: "Consultant",
+                organization: "VallotKarp Consulting",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/63e7aa16c16c4c62a8fdec408cc54558!_!3a53b277e25ef0fd48fcd49810afd0da.jpg?f=webp"
+            },
+            {
+                name: "Katie McDaniel",
+                title: "Student Programs Manager",
+                organization: "Bass, Berry & Sims PLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/2d1af233599f4bda9d814d5c8b4551bc!_!de432632eeac8962732b58f50d380be5.png?f=webp"
+            },
+            {
+                name: "Kyle McEntee",
+                title: "Senior Director of Prelaw Engagement",
+                organization: "Law School Admission Council",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f37768e212aa4a9082c05dce3adee489!_!b28cf21066d6846bfc580e03efc7a21d.jpg?f=webp"
+            },
+            {
+                name: "Irena McGrath",
+                title: "President",
+                organization: "McGrath Talent Strategies",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/8e071a4b1038498285e842f99d2b45c3!_!0ab44ca5afc458bae6fda241505e8cf2.jpg?f=webp"
+            },
+            {
+                name: "Kristine McKinney",
+                title: "Chief Operating Officer",
+                organization: "Fish & Richardson",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b4fcd619c1644a1c8eaa45dc92852525!_!ab1626c4f4364e22a7546a7bd5a4d592.jpg?f=webp"
+            },
+            {
+                name: "Julie McLaughlin",
+                title: "Director, Career Counseling and Professional Development",
+                organization: "The George Washington University Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/e6ae3f29849f424a94c2a977a69cc42d!_!45794fe12c9d2e70d1c34ce6c3fe3e7d.jpg?f=webp"
+            },
+            {
+                name: "Mia McLaughlin",
+                title: "Legal Recruiting Manager",
+                organization: "Reed Smith",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/7b00a7239a6a49969ff3392cbc1a437c!_!8baa24a69ae41030740958a227020fff.jpg?f=webp"
+            },
+            {
+                name: "Ajay Mehrotra",
+                title: "",
+                organization: "American Bar Foundation & Northwestern Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/cc24b2c496ed4b058019464d4103bd53!_!63615178fbf053f326697861e0418c32.jpeg?f=webp"
+            },
+            {
+                name: "Frank Melvin",
+                title: "Account Manager",
+                organization: "LinkedIn",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/2ea5466ba1844ebfa240601f63ff649d!_!9e500157efb66b5d468cc99411889aee.jpg?f=webp"
+            },
+            {
+                name: "Jennifer Mencarini",
+                title: "Director of Cultural Engagement",
+                organization: "Fox Rothschild LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a031966837b246dca69af92837491514!_!f7bb7b00e851b80a057140bc37b9730a.jpg?f=webp"
+            },
+            {
+                name: "Brittany Merhar",
+                title: "Director of Law School Recruiting",
+                organization: "Benesch Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/54cdc100556f463197f5a5c6ecf3cc32!_!3ecd13e9994c4a7931d34459db3834fc.jpg?f=webp"
+            },
+            {
+                name: "Tina Metis",
+                title: "Director of Attorney Recruiting",
+                organization: "O'Melveny & Myers LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/3b7d9f1991b0461c808d7d833d52be83!_!a153481ec59b2ac0d59e71993e478ef8.jpg?f=webp"
+            },
+            {
+                name: "Greg Miarecki",
+                title: "Executive Assistant Dean for Career Planning and Professional Development",
+                organization: "University of Illinois College of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6ab0ba07f929433eb9734a1fb312eddb!_!e17fa442124c78b5c1aa3a039062d1d7.jpg?f=webp"
+            },
+            {
+                name: "Catherine Miller",
+                title: "Alumni Relations Coordinator",
+                organization: "Akin",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b16caf8df5a94eaa9aa519b18e33ce28!_!f7e06a7d92d8aa7c19335f1ca5a4c061.jpg?f=webp"
+            },
+            {
+                name: "Beth Moeller",
+                title: "Assistant Dean of Career Services",
+                organization: "UCLA School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/5f92a8b3c4c746a79334e8fbb0e8a2e3!_!9b7764ab32e5f932badfff456da582d3.jpg?f=webp"
+            },
+            {
+                name: "Amy Monroe",
+                title: "Director of Partner Recruiting",
+                organization: "Fisher & Phillips",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b470d87d5636432e8ef91d23605509e8!_!83c00db7dbc364b6376aa3608ad27ed6.jpg?f=webp"
+            },
+            {
+                name: "James Moore",
+                title: "Director of Legal Talent",
+                organization: "Coblentz Patch Duffy & Bass LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d03e80dfab984cb4a8aa8545698d8b3d!_!899215b625aa0126527a857650c33161.jpg?f=webp"
+            },
+            {
+                name: "Manar Morales",
+                title: "Founder & CEO",
+                organization: "The Diversity & Flexibility Alliance",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0f70cffbd70c48698082a92bb5b4514c!_!8f3b1cda8738537d1dfbe5bf37b62132.jpg?f=webp"
+            },
+            {
+                name: "Sandra Morriss",
+                title: "Law Student Talent Acquisition Manager",
+                organization: "Davis Wright Tremaine LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/20b7f54f7f274f35b55006ead9cb831e!_!fb12dde03afeb71fbd2ff24537e7b856.png?f=webp"
+            },
+            {
+                name: "Ginny Mueller",
+                title: "Senior Talent Acquisition Manager, Law Students",
+                organization: "McDermott Will & Schulte LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d50f69373897400b9c19b80331e8e4d1!_!7103565537c1a7c7722cd056ca46918d.jpg?f=webp"
+            },
+            {
+                name: "Kaushi Muthukuda",
+                title: "Director of Attorney Professional Development",
+                organization: "Honigman LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ea02067fe8474d5384fe7096d49a5b4c!_!95ae514b5d6e8a8b7a7e6b44a1c862ba.jpg?f=webp"
+            },
+            {
+                name: "Marsha Nagorsky",
+                title: "Senior Manager, Attorney Recruiting Marketing & Alumni Relations",
+                organization: "Wilson, Sonsini Goodrich & Rosati",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/8f73802eb4a441dc9afb6caaa460a5e7!_!6bdcd7b71c87443f8b975aae604cdd81.jpg?f=webp"
+            },
+            {
+                name: "Michelle Nash",
+                title: "Director of Leadership and Organizational Development",
+                organization: "Hogan Lovells",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d6f9a41b6f9f49ab8fb83a388784ba90!_!97e5dee5ff4001fa75700457ab2bc957.jpg?f=webp"
+            },
+            {
+                name: "Kay Nash",
+                title: "Chief Talent Officer",
+                organization: "Wiley Rein LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d8c20980e45f4c319d8c76223315c262!_!d9a1c06a4b70a0ed726e9fb453080d91.jpg?f=webp"
+            },
+            {
+                name: "Jennie Netburn",
+                title: "Public Sector Career Counselor",
+                organization: "Georgetown Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/840812afcbf94226bff9b951440bd69d!_!c0a56ed3a33592b4b0316a34b640e42a.jpg?f=webp"
+            },
+            {
+                name: "Nicole Netkin-Collins",
+                title: "Director for Government & Public Interest",
+                organization: "University of Colorado Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/bd6a947228844edf8c18f2222a61d99a!_!53b2938e8619af17f6faf6904c05b41d.jpg?f=webp"
+            },
+            {
+                name: "Molly Nguyen",
+                title: "Director of Data Operations, Accreditation Project",
+                organization: "American Bar Association",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/2425b5f7e4e449708b0c9f955e0d476e!_!4cdcf9e36bb4c85f2d6ee7013f11082d.jpg?f=webp"
+            },
+            {
+                name: "Megan O'Neill",
+                title: "Founding Partner",
+                organization: "DTO Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/de28b891b4d945e48811916244b7c386!_!04fc379b7105a91c13c32e64ce404484.jpg?f=webp"
+            },
+            {
+                name: "S. Jessica Ourk",
+                title: "Director of Diversity, Equity & Inclusion",
+                organization: "Keker, Van Nest & Peters LLP",
+                imageUrl: ""
+            },
+            {
+                name: "Kathleen Overly",
+                title: "Director of Judicial Programs",
+                organization: "University of Texas School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/241a0e8827e3408ba3a257ff66ef1386!_!6ae3b5b1292d3cf09db5cbc24ac7bdbe.jpg?f=webp"
+            },
+            {
+                name: "Veronica D. Paricio",
+                title: "Senior Manager, Strategic Alumni Engagement & Client Relations",
+                organization: "Goodwin Procter LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ed7bc8f9fdc14f8db7bd11e77b54c178!_!d2fd0474caafa18eab7e879121345c99.jpg?f=webp"
+            },
+            {
+                name: "Swati Parikh",
+                title: "Assistant Dean, Coaching and Graduating Student Advising",
+                organization: "New York Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/87ed517189a148bbab6f818eb87878a0!_!9241879af42470076d348019fda106c0.jpg?f=webp"
+            },
+            {
+                name: "Michelle Parsons",
+                title: "Assistant Dean for Career Services",
+                organization: "Vanderbilt Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b7219a0436984d5c8c202abce5e5775b!_!88c8a32ca2a90bb339d14ba21386bb07.jpg?f=webp"
+            },
+            {
+                name: "Matthew Pascocello",
+                title: "Career Transitions Advisor",
+                organization: "Akin Gump Strauss Hauer & Feld LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a98ebf5f69c24384942ab0a94893d5e5!_!feabe834a2d6234ccbb3bd36f64ac064.jpg?f=webp"
+            },
+            {
+                name: "Natasha Patel",
+                title: "Assistant Dean for Career Development",
+                organization: "Emory University Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/cbd281720c5f4c00b29fdf698fb30de8!_!02352bf221e952b3f793e167915a474c.jpg?f=webp"
+            },
+            {
+                name: "Claire Patten",
+                title: "Manager of Legal Recruiting",
+                organization: "Wachtell, Lipton, Rosen & Katz",
+                imageUrl: ""
+            },
+            {
+                name: "Elizabeth Peck",
+                title: "Director, JD Counselor and Coach",
+                organization: "Yale Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b40ef2eccdfd4d3291ee040cddc066e8!_!02afa4761e39feef61d2b4c6e03d55c3.jpg?f=webp"
+            },
+            {
+                name: "Hiroko Peraza",
+                title: "Senior Manager, Lawyer Talent Acquisition & Outreach",
+                organization: "Davis Wright Tremaine LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/8fb458dee46840f2945cce1eb67c9ad2!_!8823517b995328cbd832735a8e7a92f8.jpg?f=webp"
+            },
+            {
+                name: "Amy Perez",
+                title: "Associate Dean, Office of Career & Professional Development",
+                organization: "University of Miami School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ea79911a897a4d0d84c215254ee1433c!_!a7cc9a7d549c8b09ca335eb2c25bfd1c.jpg?f=webp"
+            },
+            {
+                name: "Savaun Perry",
+                title: "Assistant Dean of Career Services North Carolina Central University School of Law",
+                organization: "North Carolina Central University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/edd2b7b00b3840a581ce6cbf5cdefd26!_!de0c12f2d1ed98228735d27702258372.jpg?f=webp"
+            },
+            {
+                name: "Melissa Peters",
+                title: "Owner",
+                organization: "MP Legal Search & current NALSC President",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0fdab6bbb5304468a41ddaf924f8b267!_!8e3bf8a42cad4eeb6c5b317b971b66cc.jpg?f=webp"
+            },
+            {
+                name: "Meghan Pier",
+                title: "Director of Associate Recruiting",
+                organization: "Jackson Walker LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/4a4f496f853e4ba3aba23b7f9af4343d!_!1dce63dfdc94fa10ff63266dc488a131.jpg?f=webp"
+            },
+            {
+                name: "George Podolin",
+                title: "Assistant Dean for Career Services",
+                organization: "William & Mary Law School",
+                imageUrl: ""
+            },
+            {
+                name: "Amanda Prasuhn",
+                title: "Director of Public Interest Financial Support",
+                organization: "Berkeley Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/982b73de1c0443a3b258710a9032022a!_!b80bf8313fa0fedb1071410eeac31736.jpg?f=webp"
+            },
+            {
+                name: "Adrienne Prentice",
+                title: "Co-Founder & CEO",
+                organization: "Keep Company",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c83c4f1a7909485dacbb80b617ab0925!_!cdf0132b8dd2c657eb911e820fc1e88c.jpg?f=webp"
+            },
+            {
+                name: "Frantz Price, Jr.",
+                title: "Director of LLM & International Careers",
+                organization: "Columbia Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/7a1f32edc9b34013b9b493c0fe99292a!_!50d0322ffe4a5a7cb01d4f0d8b44de2c.jpg?f=webp"
+            },
+            {
+                name: "Natalie Quinn",
+                title: "Director of Legal Recruitment",
+                organization: "Fox Rothschild LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/697f935bf21944eaa5c8ef876d5db5e9!_!3805896768d0d7eea473f8d08f0be398.jpg?f=webp"
+            },
+            {
+                name: "Shane Read",
+                title: "Consultant",
+                organization: "Shane Read LLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/f29603ec961b4f8bbb4387fc1cbf9c84!_!0e50dba0b97411d81e48ed3458e653dc.jpg?f=webp"
+            },
+            {
+                name: "Kate Reder Sheikh",
+                title: "Partner",
+                organization: "Major, Lindsey & Africa",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/21dd1d96be264ba5bdecc9cbdfb9a6b4!_!04565adc85fc81c8b1698094e06d193d.jpg?f=webp"
+            },
+            {
+                name: "Michele Richman",
+                title: "Chief People Officer",
+                organization: "Lawline",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/7e41b4a5a5f04c1f9ca607b5e4dc31ab!_!fbc4f833d182915372ba6471ed03f1f5.jpg?f=webp"
+            },
+            {
+                name: "Miylie Roan",
+                title: "Senior HR Generalist",
+                organization: "Lawline",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/e977f1557c65462c98c6e68377402d67!_!04d6ec3cfbb033602396e69ec17d0f18.jpg?f=webp"
+            },
+            {
+                name: "Mike Romney",
+                title: "Deputy District Attorney",
+                organization: "Riverside County District Attorney's Office",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b6574907f4f3447a93414e3cc4ec933f!_!5d26f3dcbadef573ffe5b2beb5b93aaf.jpg?f=webp"
+            },
+            {
+                name: "Jennifer Rosato Perea",
+                title: "Managing Director, Accreditation and Legal Education",
+                organization: "American Bar Association",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c8379fd0eda9458b9b3586fd20d5d506!_!8c78f40537f209830ede976a7e031737.jpg?f=webp"
+            },
+            {
+                name: "Martin Rosenow",
+                title: "Attorney at Law",
+                organization: "Rosenow Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/5da35f6ee1bb427299bfb1313edec8e7!_!94130064963cd32148cf4348563529a2.jpg?f=webp"
+            },
+            {
+                name: "Kelly Ross",
+                title: "Leadership Coach. Facilitator. Learning & Talent Strategist.",
+                organization: "Ross Associates",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a830656f3f354705b077c2787a541f15!_!b791e4b16da2489f111d1378bc77568c.jpg?f=webp"
+            },
+            {
+                name: "Melanie Rowen",
+                title: "Trainer, Coach & Mediator",
+                organization: "Center for Understanding in Conflict",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/4d5b4f8c4b2f4f8592886fe22012dd4a!_!b79744031b6ec2512aa3417a34023816.jpg?f=webp"
+            },
+            {
+                name: "Ayanna Ryans-Holder",
+                title: "Manager DEI Growth",
+                organization: "Davis Wright Tremaine",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c151aec1de5848bcbc2a39525093db56!_!856538fbf1b35b0c291008e04954f18b.jpg?f=webp"
+            },
+            {
+                name: "Kelly Ryan",
+                title: "Director, Professional Development",
+                organization: "Venable LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/ccf1928d1513421b901d4df271cc9fcc!_!495d6d6c6154c7de0db7dc8f9fdb2c0c.jpg?f=webp"
+            },
+            {
+                name: "Halle Sabo",
+                title: "Recruiting & Human Resources Manager",
+                organization: "Rothwell, Figg, Ernst & Manbeck, P.C.",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0a5de24ef2454193bc9ebda25bfeb6a6!_!33a67b27ad019444c222f321b22f8e24.jpg?f=webp"
+            },
+            {
+                name: "Ben Sachs",
+                title: "Professor",
+                organization: "University of Virginia School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/dc9cc2b347ec4be9adbb6065f5004ba9!_!ced74cb4ba69dbce6fc2b1168acad8ca.jpg?f=webp"
+            },
+            {
+                name: "Mary Beth Salem Moore",
+                title: "Legal Recruiting Manager",
+                organization: "Benesch",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/5a6b10015b5b444da0b0ef5e53031799!_!c98545ddab871bf65046bd67638fb8c8.jpg?f=webp"
+            },
+            {
+                name: "Philip Sanford",
+                title: "Alumni Relations Manager",
+                organization: "Freshfields LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9d8e1171634f41adb28274e58fd7c357!_!d2d34e82524ec6ef8b7a52415520e6e2.jpg?f=webp"
+            },
+            {
+                name: "Jeremy Schifeling",
+                title: "Founder",
+                organization: "The Job Insiders",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/457239e0a8f142c49edc7580ed0192eb!_!b7c2050a7e6ed4d6fc8658ab321cb285.jpg?f=webp"
+            },
+            {
+                name: "Tom Schoenherr",
+                title: "Assistant Dean of Public Interest Resource Center (Retired)",
+                organization: "Fordham Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/cf276914175541c78c7617dab7b23307!_!56f2704315092fa69799efe456a1b228.jpg?f=webp"
+            },
+            {
+                name: "Katrin Schroll",
+                title: "Associate Dean, Enrollment Management, Integrated Marketing, and Financial Aid",
+                organization: "University of Miami School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/98384e53f2634e488f7d496aa1d25ab3!_!9a3f0704707cac48697d35c32a1dbbb2.jpg?f=webp"
+            },
+            {
+                name: "Kia Scipio",
+                title: "Founder",
+                organization: "ISEE Creative LLC",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/de28b891b4d945e48811916244b7c386!_!04fc379b7105a91c13c32e64ce404484.jpg?f=webp"
+            },
+            {
+                name: "Stephen E. Seckler",
+                title: "President",
+                organization: "Seckler Attorney Coaching",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0c5b53a4a8464d709f278f34a6f79f19!_!9842fd7f7189c75f9687c229ae617e41.jpg?f=webp"
+            },
+            {
+                name: "Kelley Shields",
+                title: "Associate Director, Office of Career Strategy",
+                organization: "Georgetown University Law Center",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9bb0eb19b60447cf9eb19622af8114af!_!f533224d5d816b2bdab74882adc320b4.jpg?f=webp"
+            },
+            {
+                name: "Janet Siegel Brown",
+                title: "",
+                organization: "Northwestern Pritzker School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/96e9feff1953451eac25968bb9c2e825!_!a8a30f8adc308457589b83868c036931.jpg?f=webp"
+            },
+            {
+                name: "Sherry-Ann Smith Gomez",
+                title: "Assistant Dean for Career Success",
+                organization: "The Judith and William Greenblatt Office of Career Success / Benjamin N. Cardozo School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/d0c972e0da9d4b3782402f7b5a00b489!_!600989231d677781aa1373172a46c270.jpg?f=webp"
+            },
+            {
+                name: "Brenda Smith Porter",
+                title: "Assistant Director of Career Services",
+                organization: "Penn State Dickinson Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/fadb7c57aa914c96984b6f9ed6ea1352!_!149912416b8d03631c0badcaece5b35b.jpg?f=webp"
+            },
+            {
+                name: "Judy Smith",
+                title: "Crisis Management Expert & Inspiration for the hit TV show Scandal",
+                organization: "",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/03785ac15d7f494ea5e63fb53dddd881!_!90b09e19ede42819d3dcad35452b0179.jpg?f=webp"
+            },
+            {
+                name: "Precillia Soares",
+                title: "Senior Attorney Recruiting Manager",
+                organization: "Holland & Knight LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/bdeecf3762c84d7cab9f658fbd227671!_!cd81a16bfd655c0268ec2b178a906aab.jpg?f=webp"
+            },
+            {
+                name: "Clara Solomon",
+                title: "Senior Director",
+                organization: "New York University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/8f5c39416f55442d87f788a401fabd3f!_!ebb6f8afd80e6ef7e428d1a3e36b26d2.jpg?f=webp"
+            },
+            {
+                name: "Caroline Springer",
+                title: "Assistant Dean, Office of Graduate Careers",
+                organization: "Georgetown University Law Center",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/098169e2c7864299bf3494695228fa36!_!315ec2b4dd3a4bc9540f88fd147b137a.png?f=webp"
+            },
+            {
+                name: "Emily Stedman",
+                title: "Partner",
+                organization: "Husch Blackwell",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/3f2beb4483df490a9d5c719ef9cd1a60!_!85767e5dc1fa81e3fe28362000e54bc1.jpg?f=webp"
+            },
+            {
+                name: "Jill Steier",
+                title: "Manager of Student Recruiting",
+                organization: "K&L Gates LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/cbd281720c5f4c00b29fdf698fb30de8!_!02352bf221e952b3f793e167915a474c.jpg?f=webp"
+            },
+            {
+                name: "Sarah Stein",
+                title: "Learning and Professional Development Director",
+                organization: "Crowell & Moring",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0ed0dfcb580c412eb4ec8a13fa252c5f!_!a06f0da3c1780540837b5742410d452c.jpg?f=webp"
+            },
+            {
+                name: "Lauren Tapper",
+                title: "Chief Talent Officer",
+                organization: "Benesch Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/b516f14b422a472fb2f24f693fe25d11!_!c54f45b4f930a0571f81a3434569e15d.jpg?f=webp"
+            },
+            {
+                name: "Leah Teague",
+                title: "Professor of Law & Director of Leadership Development Program",
+                organization: "Baylor University Law School",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/8c3fdabf138549d69fd0c48f86658dae!_!aa67acac0f1224c49280356893ba7782.jpg?f=webp"
+            },
+            {
+                name: "Lindsay Tomenson",
+                title: "Chief Professional Development Officer",
+                organization: "Davis Polk & Wardwell",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6ac2ca261db04ddca79af59ff99ed5d2!_!ccd7fe9daf33f1861e73e1aaa443d608.png?f=webp"
+            },
+            {
+                name: "Fiona Trevelyan",
+                title: "President & CEO",
+                organization: "The NALP Foundation",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/8242bfe2b9414dfdb00681b8af12aa1e!_!4f7a008a7d08f90f2837b6a1af8c317c.jpg?f=webp"
+            },
+            {
+                name: "Josh Troy",
+                title: "Director of Talent Management",
+                organization: "Kilpatrick Townsend & Stockton LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9bc047ee77334a9e8bbd05257cb931d2!_!e73b526dfb757df318bb99a342833770.jpg?f=webp"
+            },
+            {
+                name: "Aleksandra (Ola) Tundak",
+                title: "Director, Professional Resources",
+                organization: "Stikeman Elliott LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/1736679a95e5490f9afa2b2cc97cf193!_!100b62b2c10dfe8b18071cb7455a79c6.jpg?f=webp"
+            },
+            {
+                name: "Angela Vallot",
+                title: "Co-Founder",
+                organization: "VallotKarp Consulting",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/95f4cbf9ae5f441188ebc213b328de15!_!95ef7264af65bbf895d833eb31ab0369.jpg?f=webp"
+            },
+            {
+                name: "Jen Van Buren",
+                title: "Attorney Development Manager",
+                organization: "Cleary Gottlieb",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/3773975b88554fd98390473bd7f0f0f9!_!019e46db2a1f2a0b374a57e27fdc326c.jpg?f=webp"
+            },
+            {
+                name: "Yazmyne Vasquez Eterovic",
+                title: "Associate Director, JD and International LL.M. Advisor",
+                organization: "University of Miami School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/032a5e57306849f7b896d912bfa1c013!_!f214bc5d3a928f75809e6c7a666fb3ef.jpg?f=webp"
+            },
+            {
+                name: "Monica Vigues-Pitan",
+                title: "CEO",
+                organization: "Legal Services of Greater Miami",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/7b2bd11ff90541b699869112f3ac2b55!_!94c5dafafa7d3a27ba20abfc1b2722e1.jpg?f=webp"
+            },
+            {
+                name: "Charlotte Wager",
+                title: "Chief Talent and Strategy Officer",
+                organization: "Jenner & Block LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/6fe9e74d3b8048a488ee16950d1442b4!_!ec515b07d8d0ed902f97842273f52c94.png?f=webp"
+            },
+            {
+                name: "Tony Waller",
+                title: "Assistant Dean for Career Development",
+                organization: "University of Georgia School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/a7d5ab9061a446099d82791947107b27!_!a1ea094513047593144b3614c8835ba2.jpg?f=webp"
+            },
+            {
+                name: "LaNitra Webb",
+                title: "Senior Manager of Diversity, Equity & Inclusion",
+                organization: "O'Melveny & Myers LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/96aa650317214f54b5b1c993bf6cdc75!_!c1521f99e1322e31ae4f1c404f3cddc9.jpg?f=webp"
+            },
+            {
+                name: "Ross Weil",
+                title: "Partner",
+                organization: "Walker Associates",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/9e13f8a74b3846719548d1caf8315959!_!b98bda137c434d47ae5ae7bc04f2d084.jpg?f=webp"
+            },
+            {
+                name: "Becky Whitehurst",
+                title: "Law School Engagement Director",
+                organization: "Sidley Austin LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/cf6c062c0c2a42159a75d6d1964a77d1!_!9b377e27c3695c6fadc3efb5711ecddf.jpg?f=webp"
+            },
+            {
+                name: "Eva Wisnik",
+                title: "President",
+                organization: "Wisnik Career Enterprises, Inc.",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/c5d5ed5bfae948d892d7f9df70a46d12!_!2b42f08157e1bb719b602e8458de92e5.jpg?f=webp"
+            },
+            {
+                name: "Kimberly Wong",
+                title: "Associate Director for Government and Public Interest Careers",
+                organization: "Boston University School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/697b3a673cd24b66aee838b0bcb7edc0!_!bee09ea9905d1cf37a19b06c76135bc7.jpg?f=webp"
+            },
+            {
+                name: "Paige Yarbrough",
+                title: "Director, Career and Professional Development",
+                organization: "Samford University Cumberland School of Law",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0d6dc0ef993e4ec9b6a83b13d6841010!_!83639a2025ecdb5ded53d50c5a86bd38.jpg?f=webp"
+            },
+            {
+                name: "Laura Yerhot",
+                title: "Career Coaching & Planning Manager",
+                organization: "Troutman Pepper Locke",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/e861d7a925b844eda17ee642abc23119!_!283cc4141432f7f96b1259685b85efe5.png?f=webp"
+            },
+            {
+                name: "Kenji Yoshino",
+                title: "Chief Justice Earl Warren Professor of Constitutional Law at NYU School of Law",
+                organization: "Director of the Meltzer Center for Diversity, Inclusion and Belonging",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/186a6c7def5e44e88918c1536e8c6900!_!b44d1cbbc5f20ceedac30616122d2cf0.jpg?f=webp"
+            },
+            {
+                name: "Sheri Zachary",
+                title: "Director of Coaching and Well-Being",
+                organization: "Saul Ewing LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/22d3be46af0b4a0cbf045a0fc60254fc!_!f84eb079bf1631870d99e96de73166b6.jpg?f=webp"
+            },
+            {
+                name: "Vanessa Zamy",
+                title: "CEO & Global Leadership Trainer",
+                organization: "LiberationX Contracts",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0911281d5c4d4071b136487925b996a2!_!6e9370d97449e993019a42db49665590.jpg?f=webp"
+            },
+            {
+                name: "Natasha Zech",
+                title: "Chief of Attorney Talent",
+                organization: "Williams & Connolly LLP",
+                imageUrl: "https://images.cvent.com/51edcc14c25e4dd8975246cfea4ef8e2/files/event/b4536b29e9d646109e7875a4af4e295b/0911281d5c4d4071b136487925b996a2!_!6e9370d97449e993019a42db49665590.jpg?f=webp"
+            }
+        ];
+
+        // Pagination Logic
+        const itemsPerPage = 12;
+        let currentPage = 1;
+        const totalPages = Math.ceil(speakers.length / itemsPerPage);
+
+        function renderCards(page) {
+            const grid = document.getElementById('speakers-grid');
+            grid.innerHTML = '';
+
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedItems = speakers.slice(start, end);
+
+            paginatedItems.forEach(speaker => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${speaker.imageUrl}" alt="${speaker.name}" class="avatar" loading="lazy">
+                    <div class="card-details">
+                        <div class="name">${speaker.name}</div>
+                        <div class="title">${speaker.title}</div>
+                        <div class="company">${speaker.organization}</div>
+                    </div>
+                    <button class="btn" onclick="openModal('${encodeURIComponent(JSON.stringify(speaker))}')">View Profile</button>
+                `;
+                grid.appendChild(card);
+            });
+
+            document.getElementById('pageNumber').innerText = page;
+            document.getElementById('totalPages').innerText = totalPages;
+            document.getElementById('prevBtn').disabled = page === 1;
+            document.getElementById('nextBtn').disabled = page === totalPages;
+        }
+
+        function changePage(direction) {
+            const newPage = currentPage + direction;
+            if (newPage > 0 && newPage <= totalPages) {
+                currentPage = newPage;
+                renderCards(currentPage);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function openModal(speakerStr) {
+            const speaker = JSON.parse(decodeURIComponent(speakerStr));
+
+            document.getElementById('modalImg').src = speaker.imageUrl;
+            document.getElementById('modalName').innerText = speaker.name;
+            document.getElementById('modalTitle').innerText = speaker.title;
+            document.getElementById('modalCompany').innerText = speaker.organization;
+
+            document.getElementById('modalOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('modalOverlay').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && document.getElementById('modalOverlay').style.display === 'flex') {
+                closeModal();
+            }
+        });
+
+        renderCards(currentPage);
+    </script>
+</body>
+
+</html>
