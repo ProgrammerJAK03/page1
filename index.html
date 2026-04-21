@@ -98,7 +98,7 @@
 
         /* Logo image styling */
         .conference-logo {
-            max-height: 60px;
+            max-height: 80px;
             width: auto;
             display: block;
             object-fit: contain;
@@ -147,66 +147,6 @@
             text-decoration: none !important;
         }
 
-        /* --- HERO SECTION WITH BACKGROUND IMAGE --- */
-        .hero {
-            position: relative;
-            text-align: center;
-            padding: 120px 20px 100px;
-            background: linear-gradient(135deg, rgba(0, 0, 128, 0.85) 0%, rgba(255, 102, 0, 0.75) 100%);
-            background-image: url('hero.jpeg');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* Dark overlay for text readability */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
-
-        /* Content above overlay */
-        .hero h1,
-        .hero p {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            color: white;
-            margin: 0 0 15px 0;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero p {
-            font-size: 22px;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 500;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Hero badge */
-        .hero-badge {
-            position: relative;
-            z-index: 2;
-            margin-bottom: 20px;
-        }
-
-        .hero-badge img {
-            max-height: 70px;
-            width: auto;
-            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
-        }
 
         /* --- SECTION TITLE STYLES (Meet Our Speakers) --- */
         .section-title {
@@ -700,6 +640,184 @@
                 flex-wrap: wrap;
             }
         }
+
+
+        /* --- HERO SLIDER SECTION --- */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        /* Slider Container */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Slides Wrapper */
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Individual Slide */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        /* Dark Overlay (optional - for better text readability if text is added later) */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        /* Navigation Arrows */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .slider-arrow:hover {
+            background: var(--hnba-orange);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-arrow {
+            left: 20px;
+        }
+
+        .next-arrow {
+            right: 20px;
+        }
+
+        /* Dots Navigation */
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--hnba-orange);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .dot:hover {
+            background: var(--hnba-orange);
+        }
+
+        /* Optional: HNBA Logo Overlay */
+        .hero-logo-overlay {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            text-align: center;
+        }
+
+        .hero-logo-overlay img {
+            max-height: 80px;
+            width: auto;
+            filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-slider {
+                height: 60vh;
+                min-height: 400px;
+            }
+
+            .slider-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .prev-arrow {
+                left: 10px;
+            }
+
+            .next-arrow {
+                right: 10px;
+            }
+
+            .dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .dot.active {
+                width: 20px;
+            }
+
+            .hero-logo-overlay img {
+                max-height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-slider {
+                height: 50vh;
+                min-height: 300px;
+            }
+        }
     </style>
 </head>
 
@@ -742,15 +860,37 @@
         </div> -->
 
 
-        <!-- HERO SECTION WITH BACKGROUND IMAGE -->
-        <div class="hero">
-            <!-- Optional: HNBA logo badge above heading (remove if not needed) -->
-            <div class="hero-badge">
-                <!-- You can place a small logo here if desired, or remove this div entirely -->
-                <!-- <img src="hnba-logo.png" alt="HNBA"> -->
+        <!-- HERO SLIDER SECTION (No Text - Only Images) -->
+        <div class="hero-slider">
+            <div class="slider-container">
+                <div class="slides">
+                    <!-- Slide 1 - Replace 'hero-image-1.jpg' with your actual image path -->
+                    <div class="slide active" style="background-image: url('hero.jpeg');"></div>
+
+                    <!-- Slide 2 - Replace 'hero-image-2.jpg' with your actual image path -->
+                    <div class="slide" style="background-image: url('hero2.jpeg');"></div>
+
+                    <!-- Slide 3 - Replace 'hero-image-3.jpg' with your actual image path -->
+                    <div class="slide" style="background-image: url('hero3.jpeg');"></div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="slider-arrow prev-arrow" id="prevSlide">❮</button>
+                <button class="slider-arrow next-arrow" id="nextSlide">❯</button>
+
+                <!-- Dots Navigation -->
+                <div class="slider-dots" id="sliderDots">
+                    <div class="dot active" data-index="0"></div>
+                    <div class="dot" data-index="1"></div>
+                    <div class="dot" data-index="2"></div>
+                </div>
+
+                <!-- Optional: HNBA Logo Overlay (Remove if not needed) -->
+                <div class="hero-logo-overlay">
+                    <!-- Replace 'hnba-logo.png' with your actual logo path -->
+                    <!-- <img src="hnba-logo.png" alt="HNBA"> -->
+                </div>
             </div>
-            <h1>Annual Education Conference</h1>
-            <p>April 14-17, 2026 | Hollywood, FL</p>
         </div>
 
 
@@ -2591,6 +2731,127 @@
         });
 
         renderCards(currentPage);
+    </script>
+    <script>
+        // Hero Slider JavaScript
+        (function () {
+            // Get all slides
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prevSlide');
+            const nextBtn = document.getElementById('nextSlide');
+
+            let currentIndex = 0;
+            let slideInterval;
+            const intervalTime = 5000; // 5 seconds between slides
+
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Remove active class from all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+
+                // Remove active class from all dots
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+
+                // Add active class to current slide and dot
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+
+                // Update current index
+                currentIndex = index;
+            }
+
+            // Function to show next slide
+            function nextSlide() {
+                let newIndex = currentIndex + 1;
+                if (newIndex >= slides.length) {
+                    newIndex = 0;
+                }
+                showSlide(newIndex);
+            }
+
+            // Function to show previous slide
+            function prevSlide() {
+                let newIndex = currentIndex - 1;
+                if (newIndex < 0) {
+                    newIndex = slides.length - 1;
+                }
+                showSlide(newIndex);
+            }
+
+            // Start auto-sliding
+            function startAutoSlide() {
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                }
+                slideInterval = setInterval(nextSlide, intervalTime);
+            }
+
+            // Stop auto-sliding (optional - for user interaction)
+            function stopAutoSlide() {
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                }
+            }
+
+            // Event listeners for arrows
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    stopAutoSlide();
+                    startAutoSlide(); // Restart timer after manual click
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    stopAutoSlide();
+                    startAutoSlide();
+                });
+            }
+
+            // Event listeners for dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                    stopAutoSlide();
+                    startAutoSlide();
+                });
+            });
+
+            // Keyboard navigation (optional)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    stopAutoSlide();
+                    startAutoSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    stopAutoSlide();
+                    startAutoSlide();
+                }
+            });
+
+            // Start auto-sliding when page loads
+            startAutoSlide();
+
+            // Pause auto-slide when hovering over slider (optional)
+            const sliderContainer = document.querySelector('.hero-slider');
+            if (sliderContainer) {
+                sliderContainer.addEventListener('mouseenter', () => {
+                    stopAutoSlide();
+                });
+
+                sliderContainer.addEventListener('mouseleave', () => {
+                    startAutoSlide();
+                });
+            }
+        })();
     </script>
 </body>
 
