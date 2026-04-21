@@ -88,7 +88,7 @@
             flex-wrap: wrap;
         }
 
-        /* Left side: logo container (replaces "NALP 2026 CONFERENCE") */
+        /* Left side: logo container */
         .nav-left {
             font-size: 20px;
             font-weight: bold;
@@ -96,22 +96,20 @@
             align-items: center;
         }
 
-        /* Logo image styling: maintain aspect ratio, fit within navbar height, responsive */
+        /* Logo image styling */
         .conference-logo {
             max-height: 60px;
-            /* matches tall navbar visual weight */
             width: auto;
             display: block;
             object-fit: contain;
             transition: filter 0.2s ease;
         }
 
-        /* Keep logo crisp and visible on dark navy background */
         .conference-logo:hover {
             filter: brightness(1.02);
         }
 
-        /* Right side: unchanged from original */
+        /* Right side navigation */
         .nav-right {
             display: flex;
             align-items: center;
@@ -132,10 +130,9 @@
             text-decoration: underline;
         }
 
-        /* Register Button - HNBA Orange (#FF6600) */
+        /* Register Button - HNBA Orange */
         .nav-btn {
             background: var(--hnba-orange);
-            /* #FF6600 */
             color: white !important;
             padding: 10px 24px;
             border-radius: 5px;
@@ -147,7 +144,6 @@
 
         .nav-btn:hover {
             background: #E05C00;
-            /* Darker orange for hover */
             text-decoration: none !important;
         }
 
@@ -157,8 +153,6 @@
             text-align: center;
             padding: 120px 20px 100px;
             background: linear-gradient(135deg, rgba(0, 0, 128, 0.85) 0%, rgba(255, 102, 0, 0.75) 100%);
-            /* HNBA Navy to Orange gradient */
-            /* Hero background image - replace 'hero.jpeg' with your actual image path */
             background-image: url('hero.jpeg');
             background-size: cover;
             background-position: center center;
@@ -166,7 +160,7 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        /* Dark overlay to ensure text readability */
+        /* Dark overlay for text readability */
         .hero::before {
             content: '';
             position: absolute;
@@ -178,7 +172,7 @@
             z-index: 1;
         }
 
-        /* Content sits above overlay */
+        /* Content above overlay */
         .hero h1,
         .hero p {
             position: relative;
@@ -201,7 +195,7 @@
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
         }
 
-        /* Optional HNBA badge or logo overlay */
+        /* Hero badge */
         .hero-badge {
             position: relative;
             z-index: 2;
@@ -212,6 +206,34 @@
             max-height: 70px;
             width: auto;
             filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+        }
+
+        /* --- SECTION TITLE STYLES (Meet Our Speakers) --- */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 'Verdana', 'Open Sans', Arial, sans-serif;
+            color: var(--hnba-navy);
+            /* #000080 - HNBA Navy */
+            position: relative;
+            padding-bottom: 18px;
+            letter-spacing: -0.3px;
+        }
+
+        /* Underline accent line below title */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--hnba-orange);
+            /* #FF6600 - HNBA Orange */
+            border-radius: 3px;
         }
 
         /* --- GRID & CARD LAYOUT --- */
@@ -245,7 +267,6 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             border-color: var(--hnba-orange);
-            /* HNBA Orange */
         }
 
         .avatar {
@@ -268,13 +289,11 @@
             font-weight: 700;
             margin-bottom: 5px;
             color: var(--hnba-navy);
-            /* HNBA Navy */
         }
 
         .title {
             font-size: 13px;
             color: var(--hnba-orange);
-            /* HNBA Orange */
             text-transform: uppercase;
             font-weight: 600;
             margin-bottom: 5px;
@@ -283,7 +302,6 @@
         .company {
             font-size: 14px;
             color: var(--hnba-navy);
-            /* HNBA Navy */
             margin-top: auto;
             margin-bottom: 20px;
         }
@@ -293,7 +311,6 @@
             width: 100%;
             padding: 10px 0;
             border: 1px solid var(--hnba-orange);
-            /* HNBA Orange */
             color: var(--hnba-orange);
             font-weight: 700;
             border-radius: 5px;
@@ -307,7 +324,7 @@
             color: white;
         }
 
-        /* --- PROFESSIONAL PAGINATION STYLES --- */
+        /* --- PAGINATION STYLES --- */
         .pagination {
             display: flex;
             justify-content: center;
@@ -343,7 +360,6 @@
 
         .page-nav-btn:hover:not(:disabled) {
             background: var(--hnba-orange);
-            /* HNBA Orange */
             color: white;
             border-color: var(--hnba-orange);
             transform: translateY(-2px);
@@ -372,7 +388,6 @@
             border-radius: 8px;
             font-weight: 700;
             color: var(--hnba-orange);
-            /* HNBA Orange */
             font-size: 16px;
             min-width: 50px;
             text-align: center;
@@ -387,7 +402,6 @@
 
         .page-total {
             color: var(--hnba-navy);
-            /* HNBA Navy */
             font-weight: 600;
         }
 
@@ -427,7 +441,6 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--hnba-navy);
-            /* HNBA Navy */
             margin-bottom: 20px;
         }
 
@@ -445,10 +458,9 @@
             color: #333;
         }
 
-        /* --- FOOTER STYLES - HNBA NAVY BACKGROUND --- */
+        /* --- FOOTER STYLES --- */
         .footer {
             background: var(--hnba-navy);
-            /* #000080 */
             color: var(--footer-text);
             padding: 60px 40px 30px;
             margin-top: 60px;
@@ -521,7 +533,6 @@
 
         .footer-section ul li:hover .footer-icon svg {
             stroke: var(--hnba-orange);
-            /* HNBA Orange on hover */
         }
 
         .social-links {
@@ -551,7 +562,6 @@
 
         .social-link:hover {
             background: var(--hnba-orange);
-            /* HNBA Orange */
             transform: translateY(-3px);
         }
 
@@ -578,13 +588,11 @@
         .newsletter-input:focus {
             outline: none;
             border-color: var(--hnba-orange);
-            /* HNBA Orange */
         }
 
         .newsletter-btn {
             padding: 10px 20px;
             background: var(--hnba-orange);
-            /* HNBA Orange */
             color: white;
             border: none;
             border-radius: 5px;
@@ -595,7 +603,6 @@
 
         .newsletter-btn:hover {
             background: #E05C00;
-            /* Darker orange */
         }
 
         .footer-bottom {
@@ -620,7 +627,20 @@
             color: white;
         }
 
-        /* Responsive */
+        /* --- RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+                margin: 40px 0 30px;
+                padding-bottom: 15px;
+            }
+
+            .section-title::after {
+                width: 60px;
+                height: 2px;
+            }
+        }
+
         @media(max-width: 900px) {
             .card {
                 flex: 0 0 calc(33.333% - 17px);
@@ -642,6 +662,18 @@
 
             .page-indicator {
                 padding: 6px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 24px;
+                margin: 30px 0 25px;
+                padding-bottom: 12px;
+            }
+
+            .section-title::after {
+                width: 50px;
             }
         }
 
@@ -724,7 +756,7 @@
 
         <!-- TITLE -->
         <div class="section-title">
-        
+            Meet Our Speakers
         </div>
 
         <!-- SPEAKER GRID -->
